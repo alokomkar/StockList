@@ -15,7 +15,7 @@ interface IStocksPersistenceSource {
 }
 
 @Singleton
-class StockPersistenceSource @Inject constructor(
+class StocksPersistenceSource @Inject constructor(
     private val dao: IUserStocksDao
 ): IStocksPersistenceSource {
 
