@@ -10,6 +10,17 @@ interface IUserStocksMapper {
 
 class UserStocksMapper @Inject constructor(): IUserStocksMapper {
     override fun mapToUserStocks(userStocksResponse: UserStocksResponse): List<UserStocks> = mutableListOf<UserStocks>().apply {
-        add(UserStocks(userStocksResponse.id))
+        for(stockDetails in userStocksResponse.userStockDetails) {
+            val currentValue = stockDetails.ltp * stockDetails.quantity
+            val investmentValue = stockDetails.avgPrice.toDouble() - stockDetails.quantity
+            add(
+                UserStocks(
+                    symbol = stockDetails.symbol,
+                    quantity = stockDetails.quantity,
+                    ltp = stockDetails.ltp,
+                    profitNLoss = currentValue - investmentValue
+                )
+            )
+        }
     }
 }
