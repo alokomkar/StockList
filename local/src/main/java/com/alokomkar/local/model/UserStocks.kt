@@ -9,5 +9,8 @@ data class UserStocks(
     val symbol: String,
     val quantity: Int,
     val ltp: Double,
-    val profitNLoss: Double
+    val profitNLoss: Double,
+    val currentValue: Double,
+    val investmentValue: Double,
+    val todayPnL: Double
 )

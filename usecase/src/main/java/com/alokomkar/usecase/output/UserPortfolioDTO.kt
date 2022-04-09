@@ -13,7 +13,7 @@ data class UserPortfolioDTO(
                 currentValue = 0.0,
                 totalInvestment = 0.0,
                 todayProfitAndLoss = 0.0,
-                overallProfitAndLoss = 0.0
+                totalProfitAndLoss = 0.0
             )
         )
     }
@@ -23,5 +23,5 @@ data class UserPortfolioSummaryDTO(
     val currentValue: Double,
     val totalInvestment: Double,
     val todayProfitAndLoss: Double,
-    val overallProfitAndLoss: Double
+    val totalProfitAndLoss: Double
 )

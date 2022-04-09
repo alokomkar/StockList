@@ -30,13 +30,23 @@ class FetchUserPortfolioUseCase @Inject constructor(
             repository.fetchUserStocks().collectLatest { result ->
                 when(result) {
                     is Result.Success ->  {
+                        var totalCurrentValue = 0.0
+                        var totalInvestmentValue = 0.0
+                        var todayPnL = 0.0
+                        var totalPnL = 0.0
+                        for(stockDetails in result.data) {
+                            totalCurrentValue += stockDetails.currentValue
+                            totalInvestmentValue += stockDetails.investmentValue
+                            totalPnL += totalCurrentValue - totalInvestmentValue
+                            todayPnL += stockDetails.todayPnL
+                        }
                         emit(Result.Success(UserPortfolioDTO(
                             result.data,
                             UserPortfolioSummaryDTO(
-                                currentValue = 0.0,
-                                totalInvestment = 0.0,
-                                todayProfitAndLoss = 0.0,
-                                overallProfitAndLoss = 0.0
+                                currentValue = totalCurrentValue,
+                                totalInvestment = totalInvestmentValue,
+                                todayProfitAndLoss = todayPnL,
+                                totalProfitAndLoss = totalPnL,
                             )
                         )))
                     }

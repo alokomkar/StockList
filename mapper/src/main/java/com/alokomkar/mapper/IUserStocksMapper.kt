@@ -18,7 +18,10 @@ class UserStocksMapper @Inject constructor(): IUserStocksMapper {
                     symbol = stockDetails.symbol,
                     quantity = stockDetails.quantity,
                     ltp = stockDetails.ltp,
-                    profitNLoss = currentValue - investmentValue
+                    profitNLoss = currentValue - investmentValue,
+                    currentValue = currentValue,
+                    investmentValue = investmentValue,
+                    todayPnL = (stockDetails.close - stockDetails.ltp) * stockDetails.quantity
                 )
             )
         }

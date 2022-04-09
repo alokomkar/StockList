@@ -56,5 +56,5 @@ data class UserStockDetailsResponse(
     @Json(name = "ltp")
     val ltp: Double,
     @Json(name = "close")
-    val close: Int
+    val close: Double
 )
