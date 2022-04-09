@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Stock List</string>
+    <string name="today_profit_and_loss"><![CDATA[Today Profit & Loss:]]></string>
+    <string name="current_value">Current Value:</string>
+    <string name="total_investment">Total Investment:</string>
+    <string name="total_profit_and_loss"><![CDATA[Profit & Loss:]]></string>
+    <string name="ltp">LTP:</string>
+    <string name="pnl">P/L:</string>
 </resources>

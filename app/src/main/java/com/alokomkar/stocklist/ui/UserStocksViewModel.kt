@@ -20,23 +20,25 @@ class UserStocksViewModel @Inject constructor(
     val uiState: LiveData<UserStocksState> = _uiState
 
     fun fetchUserPortfolio() {
-        _uiState.postValue(UiState(
-            isLoading = true
-        ))
+        _uiState.postValue(UiState(isLoading = true))
         viewModelScope.launch {
             userPortfolioUseCase.execute().collect {
                 when(it) {
                     is Result.Success -> {
-                        _uiState.postValue(UiState(
-                            isLoading = false,
-                            userPortfolio = it.data
-                        ))
+                        _uiState.postValue(
+                            UiState(
+                                isLoading = false,
+                                userPortfolio = it.data
+                            )
+                        )
                     }
                     is Result.Error -> {
-                        _uiState.postValue(UiState(
-                            isLoading = false,
-                            userPortfolio = UserPortfolioDTO.emptyObject
-                        ))
+                        _uiState.postValue(
+                            UiState(
+                                isLoading = false,
+                                userPortfolio = UserPortfolioDTO.emptyObject
+                            )
+                        )
                         _uiState.postValue(
                             ErrorState(
                                 it.exception

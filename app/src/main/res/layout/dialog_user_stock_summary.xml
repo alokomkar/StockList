@@ -1,7 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/default_half_padding"
     >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCurrentValueLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_half_margin"
+        android:text="@string/current_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/black"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTotalInvestmentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_investment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentValueLabel"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_marginTop="@dimen/default_half_margin"
+        android:textColor="@color/black"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTodayPNLLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/today_profit_and_loss"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalInvestmentLabel"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_marginTop="@dimen/default_half_margin"
+        android:textColor="@color/black"
+        />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/divider_height"
+        android:layout_marginHorizontal="@dimen/default_half_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:background="@color/divider_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTodayPNLLabel"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvToalPNLLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_profit_and_loss"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_marginTop="@dimen/default_margin"
+        android:textColor="@color/black"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCurrentValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="@dimen/default_margin"
+        tools:text="Rs 100"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCurrentValueLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvCurrentValueLabel"
+        android:textColor="@color/default_value_color"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTotalInvestment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="@dimen/default_margin"
+        tools:text="Rs 100"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTotalInvestmentLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTotalInvestmentLabel"
+        android:textColor="@color/default_value_color"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTodayPNL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="@dimen/default_margin"
+        tools:text="Rs 100"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTodayPNLLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTodayPNLLabel"
+        android:textColor="@color/default_value_color"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTotalPnl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="@dimen/default_margin"
+        tools:text="Rs 100"
+        app:layout_constraintBottom_toBottomOf="@+id/tvToalPNLLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvToalPNLLabel"
+        android:textColor="@color/default_value_color"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
