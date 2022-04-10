@@ -6,13 +6,13 @@ import com.alokomkar.usecase.IFetchUserPortfolioUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.DelicateCoroutinesApi
 import javax.inject.Singleton
 
 @DelicateCoroutinesApi
 @Module(includes = [RepositoryModule::class])
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 interface UseCaseModule {
 
     @Binds

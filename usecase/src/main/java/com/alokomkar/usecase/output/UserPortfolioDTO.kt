@@ -9,12 +9,7 @@ data class UserPortfolioDTO(
     companion object {
         val emptyObject = UserPortfolioDTO(
             emptyList(),
-            UserPortfolioSummaryDTO(
-                currentValue = 0.0,
-                totalInvestment = 0.0,
-                todayProfitAndLoss = 0.0,
-                totalProfitAndLoss = 0.0
-            )
+            UserPortfolioSummaryDTO.emptyObject
         )
     }
 }
@@ -24,4 +19,13 @@ data class UserPortfolioSummaryDTO(
     val totalInvestment: Double,
     val todayProfitAndLoss: Double,
     val totalProfitAndLoss: Double
-)
+) {
+    companion object {
+        val emptyObject = UserPortfolioSummaryDTO(
+            currentValue = 0.0,
+            totalInvestment = 0.0,
+            todayProfitAndLoss = 0.0,
+            totalProfitAndLoss = 0.0
+        )
+    }
+}
