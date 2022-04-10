@@ -2,6 +2,9 @@ package com.alokomkar.stocklist.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.alokomkar.stocklist.databinding.ActivityMainBinding
 import com.alokomkar.stocklist.ui.adapter.UserStocksAdapter
@@ -26,11 +29,17 @@ class MainActivity : AppCompatActivity() {
                     is UiState -> {
                         adapter.submitList(state.userPortfolio.userStocks)
                         tvTotalPnl.text = DecimalFormat.getInstance().format(state.userPortfolio.userPortfolioSummary.totalProfitAndLoss)
+                        btnRefresh.visibility = View.GONE
                     }
-                    is ErrorState -> {}
+                    is ErrorState -> {
+                        Log.e(UserStockSummaryDialog.TAG, state.error?.localizedMessage ?: "Unknown error")
+                        state.error?.printStackTrace()
+                        Toast.makeText(this@MainActivity, state.error?.message ?: "Unknown error", Toast.LENGTH_SHORT).show()
+                        btnRefresh.visibility = View.VISIBLE
+                    }
                 }
             }
-
+            btnRefresh.setOnClickListener { viewModel.fetchUserPortfolio() }
             summaryLayout.setOnClickListener {
                 showUserStockSummary()
             }

@@ -22,31 +22,35 @@ class UserStocksViewModel @Inject constructor(
     fun fetchUserPortfolio() {
         _uiState.postValue(UiState(isLoading = true))
         viewModelScope.launch {
-            userPortfolioUseCase.execute().collect {
-                when(it) {
-                    is Result.Success -> {
-                        _uiState.postValue(
-                            UiState(
-                                isLoading = false,
-                                userPortfolio = it.data
+            try {
+                userPortfolioUseCase.execute().collect {
+                    when(it) {
+                        is Result.Success -> {
+                            _uiState.postValue(
+                                UiState(
+                                    isLoading = false,
+                                    userPortfolio = it.data
+                                )
                             )
-                        )
-                    }
-                    is Result.Error -> {
-                        _uiState.postValue(
-                            UiState(
-                                isLoading = false,
-                                userPortfolio = UserPortfolioDTO.emptyObject
+                        }
+                        is Result.Error -> {
+                            _uiState.postValue(
+                                UiState(
+                                    isLoading = false,
+                                    userPortfolio = UserPortfolioDTO.emptyObject
+                                )
                             )
-                        )
-                        _uiState.postValue(
-                            ErrorState(
-                                it.exception
+                            _uiState.postValue(
+                                ErrorState(
+                                    it.exception
+                                )
                             )
-                        )
+                        }
                     }
                 }
-
+            } catch (e: Exception) {
+                e.printStackTrace()
+                _uiState.postValue(ErrorState(e))
             }
         }
     }

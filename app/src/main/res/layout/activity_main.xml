@@ -24,6 +24,18 @@
         app:layout_constraintVertical_bias="0.0"
         />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnRefresh"
+        android:text="@string/refresh"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/default_margin"
+        android:visibility="gone"
+        />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/summaryLayout"
         android:layout_width="match_parent"
