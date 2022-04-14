@@ -1,6 +1,5 @@
 package com.alokomkar.usecase
 
-import com.alokomkar.core.DispatcherProvider
 import com.alokomkar.core.Result
 import com.alokomkar.repository.IUserStocksRepository
 import com.alokomkar.usecase.output.UserPortfolioDTO
@@ -17,8 +16,7 @@ interface IFetchUserPortfolioUseCase {
 
 @DelicateCoroutinesApi
 class FetchUserPortfolioUseCase @Inject constructor(
-    private val repository: IUserStocksRepository,
-    private val dispatcherProvider: DispatcherProvider
+    private val repository: IUserStocksRepository
 ) : IFetchUserPortfolioUseCase {
 
     //Use channel flow for concurrent emissions
